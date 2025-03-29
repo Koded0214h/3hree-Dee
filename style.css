@@ -526,3 +526,62 @@ footer {
         height: 200px;
     }
 }
+
+/* Image optimization styles */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Add loading animation */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+/* Image placeholder styles */
+.image-placeholder {
+    background: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-placeholder::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+/* Progressive image loading */
+.progressive-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.progressive-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.progressive-image .preview {
+    filter: blur(10px);
+    transform: scale(1.1);
+}
+
+.progressive-image .full {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.progressive-image .full.loaded {
+    opacity: 1;
+}
